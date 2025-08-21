@@ -1,0 +1,131 @@
+{
+  "name": "YT_AutoMation",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1Fi1hsL26m3TRklT02k5ggTzcGC3z2-KS",
+          "mode": "id"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "id": "eed93aa6-44e1-49d2-8b09-3928c317173e",
+      "name": "Drive Trigger",
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        -192
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "WWmXQsTMH3VcmEtR",
+          "name": "left-arm-memes"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json[\"id\"] }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "id": "03d5fea3-c06a-4dc5-bc20-53cf0382c30e",
+      "name": "Drive Download File",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 1,
+      "position": [
+        240,
+        -192
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "WWmXQsTMH3VcmEtR",
+          "name": "left-arm-memes"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "upload",
+        "title": "Uploaded by n8n",
+        "regionCode": "PK",
+        "categoryId": "23",
+        "options": {
+          "description": "WELCOME TO MY VIDEO  SUB OR GAY . #memes #trynottolought #laughoutloudmemes #discordmemes #monkey #comedy #humor #dankmemes #shorts #Brustoutlaguhinhg #LOL #hilariousmemes #most #video #leftarmmemes",
+          "notifySubscribers": true,
+          "privacyStatus": "unlisted",
+          "publicStatsViewable": false,
+          "selfDeclaredMadeForKids": false,
+          "tags": "memes,funnymemes,jokes,laugh,Randommems,funnyjokes,Memes,Memes frim left arm,Try not to laugh,Viral,Shorts,Discord Memes,Dank Humor"
+        }
+      },
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1,
+      "position": [
+        528,
+        -208
+      ],
+      "id": "dbe744f5-cd0b-446d-a0c6-b56a36d95bd5",
+      "name": "Upload a video",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "nGBhwwgJrP4cwRst",
+          "name": "left-arm-memes"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Drive Download File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Drive Download File": {
+      "main": [
+        [
+          {
+            "node": "Upload a video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "63573782-d639-4974-afb9-955e7e090073",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "79412d2e62a2885563a865df86dd36feb9dba4a8c70c72b4d03d59c98b12337a"
+  },
+  "id": "WaQD3Ia6Q7gMMbdA",
+  "tags": []
+}
